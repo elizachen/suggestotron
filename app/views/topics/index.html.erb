@@ -11,7 +11,9 @@
   </thead>
 
   <tbody>
-    <% @topics.sort.each do |topic| %>
+    <% @topics.sort_by {|topic| -topic.votes.count}.each do |topic| %>
+    <%# @topics.sort_by {|topic| -topic.votes.count}.reverse.each do |topic| %>
+    <%# @topics.each do |topic| %>
       <tr>
         <td><%= link_to topic.title, topic %></td>
         <td><%= pluralize(topic.votes.count, "vote") %></td>
